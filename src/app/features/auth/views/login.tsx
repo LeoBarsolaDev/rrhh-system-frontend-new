@@ -19,7 +19,7 @@ export default function LoginPage(){
 
     return(
         <div className="flex w-full h-full justify-center items-center">
-            <Frame styles="py-8 min-w-80">
+            <Frame styles="py-8 min-w-80" rounded>
                 <Logo />
                 
                 <Form url="/auth/login" className="px-4 mb-4" onSuccess={onSuccess} onError={onError}>

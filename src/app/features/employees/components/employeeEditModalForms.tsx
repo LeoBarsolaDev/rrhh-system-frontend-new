@@ -1,11 +1,10 @@
-import { faBirthdayCake, faBuilding, faCalendarPlus, faChurch, faEnvelope, faHouse, faIdCard, faLayerGroup, faMobile, faPhone, faSitemap, faUsers, faVenusMars } from "@fortawesome/free-solid-svg-icons";
+import { faBuilding, faCalendarPlus, faChurch, faEnvelope, faHouse, faIdCard, faLayerGroup, faMobile, faPhone, faSitemap, faUsers } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "../../../shared/components/dropdown";
 import Input from "../../../shared/components/input";
 
-export function CreateEmployeeWorkerFormPersonal(){
+export function EditEmployeeFormPersonal(){
     return(
-        <div className="p-2 flex flex-col justify-center">
-            <span className="text-primary font-bold text-center"> Obrero </span>
+        <div className="flex flex-col justify-center mb-2">
             <Dropdown
                 label="Tipo de documento"
                 icon={faIdCard}
@@ -42,20 +41,6 @@ export function CreateEmployeeWorkerFormPersonal(){
             />
 
             <Dropdown
-                label="Genero"
-                icon={faVenusMars}
-                name="gender"
-                // onChange={(value) => handleChange("job_type", value)}
-                placeholder="Seleccione el Genero"
-                // required
-                options={[
-                    {name:'Masculino', id:'1'}, 
-                    {name:'Femenino', id:'2'}, 
-                    {name:'No binario', id:'3'}, 
-                ]}
-            />
-
-            <Dropdown
                 label="Estado civil"
                 icon={faChurch}
                 name="marital_status"
@@ -71,16 +56,6 @@ export function CreateEmployeeWorkerFormPersonal(){
             />
 
             <Input 
-                label="Fecha de nacimiento"
-                name="birthday"
-                type="date"
-                placeholder="88.888.888"
-                icon={faBirthdayCake}
-                // required
-                // onChange={(value) => handleChange("full_name", value)}
-            />
-
-            <Input 
                 label="Domicilio"
                 name="address"
                 type="text"
@@ -93,10 +68,9 @@ export function CreateEmployeeWorkerFormPersonal(){
     )
 }
 
-export function CreateEmployeeWorkerFormWork(){
+export function EditEmployeeFormWorkerWork(){
     return(
-        <div className="p-2 flex flex-col justify-center">
-            <span className="text-primary font-bold text-center"> Obrero </span>
+        <div className="flex flex-col justify-center mb-2">
             <Dropdown
                 label="Categoria"
                 icon={faLayerGroup}
@@ -143,16 +117,6 @@ export function CreateEmployeeWorkerFormWork(){
             />
 
             <Input 
-                label="Fecha de ingreso"
-                name="start_date"
-                type="date"
-                placeholder=""
-                icon={faCalendarPlus}
-                // required
-                // onChange={(value) => handleChange("full_name", value)}
-            />
-
-            <Input 
                 label="Fecha de ingreso Legal"
                 name="legal_start_date"
                 type="date"
@@ -165,10 +129,86 @@ export function CreateEmployeeWorkerFormWork(){
     )
 }
 
-export function CreateEmployeeWorkerFormContact(){
+export function EditEmployeeFormAdminWork(){
     return(
-        <div className="p-2 flex flex-col justify-center">
-            <span className="text-primary font-bold text-center"> Obrero </span>
+        <div className="flex flex-col justify-center mb-2">
+            <Dropdown
+                label="Categoria"
+                icon={faLayerGroup}
+                name="category"
+                // onChange={(value) => handleChange("job_type", value)}
+                placeholder="Seleccione la Categoria"
+                // required
+                options={[
+                    {name:'Administrativo', id:'1'}, 
+                    {name:'Tecnico', id:'2'}, 
+                    {name:'Vendedor', id:'3'}, 
+                    {name:'Maestranza', id:'4'},
+                ]}
+            />
+
+            <Dropdown
+                label="Sub-categoria"
+                icon={faSitemap}
+                name="subcategory"
+                // onChange={(value) => handleChange("job_type", value)}
+                placeholder="Seleccione la Sub-categoria"
+                // required
+                options={[
+                    {name:'...', id:'1'}, 
+                ]}
+            />
+
+            <Dropdown
+                label="Area"
+                icon={faBuilding}
+                name="subcategory"
+                // onChange={(value) => handleChange("job_type", value)}
+                placeholder="Seleccione la Area"
+                // required
+                options={[
+                    {name:'Emprendedora', id:'1'}, 
+                    {name:'Constructora', id:'2'}, 
+                    {name:'Obra', id:'3'}, 
+                    {name:'Deposito', id:'4'}, 
+                    {name:'Subcontratista', id:'5'}, 
+                    {name:'Inmobiliaria', id:'6'}, 
+                    {name:'Adm. Servicios', id:'7'}, 
+                    {name:'Proyecto', id:'8'}, 
+                ]}
+            />
+
+            <Dropdown
+                label="Departamento"
+                icon={faUsers}
+                name="department"
+                // onChange={(value) => handleChange("job_type", value)}
+                placeholder="Seleccione el Departamento"
+                // required
+                options={[
+                    {name:'Finanzas', id:'1'}, 
+                    {name:'Recursos Humanos', id:'2'}, 
+                    {name:'Comunicación', id:'3'}, 
+                    {name:'Informática', id:'4'}, 
+                ]}
+            />
+
+            <Input 
+                label="Fecha de ingreso"
+                name="start_date"
+                type="date"
+                placeholder=""
+                icon={faCalendarPlus}
+                // required
+                // onChange={(value) => handleChange("full_name", value)}
+            />
+        </div>
+    )
+}
+
+export function EditEmployeeContact(){
+    return(
+        <div className="flex flex-col justify-center mb-2">
             <Input 
                 label="E-Mail"
                 name="email"

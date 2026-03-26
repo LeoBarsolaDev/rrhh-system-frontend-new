@@ -2,7 +2,7 @@ import { faBirthdayCake, faBuilding, faCalendarPlus, faChurch, faEnvelope, faHou
 import Input from "../../../shared/components/input";
 import Dropdown from "../../../shared/components/dropdown";
 
-export function CreateemployeeAdminFormPersonal(){
+export function CreateEmployeeAdminFormPersonal(){
     return(
         <div className="p-2 flex flex-col justify-center">
             <span className="text-primary font-bold text-center"> Administrativo </span>
@@ -83,8 +83,8 @@ export function CreateemployeeAdminFormPersonal(){
             <Input 
                 label="Domicilio"
                 name="address"
-                type="date"
-                placeholder="88.888.888"
+                type="text"
+                placeholder="..."
                 icon={faHouse}
                 // required
                 // onChange={(value) => handleChange("full_name", value)}
@@ -93,7 +93,7 @@ export function CreateemployeeAdminFormPersonal(){
     )
 }
 
-export function CreateemployeeAdminFormWork(){
+export function CreateEmployeeAdminFormWork(){
     return(
         <div className="p-2 flex flex-col justify-center">
             <span className="text-primary font-bold text-center"> Administrativo </span>
@@ -171,14 +171,14 @@ export function CreateemployeeAdminFormWork(){
     )
 }
 
-export function CreateemployeeAdminFormContact(){
+export function CreateEmployeeAdminFormContact(){
     return(
         <div className="p-2 flex flex-col justify-center">
             <span className="text-primary font-bold text-center"> Administrativo </span>
             <Input 
                 label="E-Mail"
                 name="email"
-                type="number"
+                type="email"
                 placeholder="user@example.com"
                 icon={faEnvelope}
                 // required
@@ -196,7 +196,7 @@ export function CreateemployeeAdminFormContact(){
             />
 
             <Input 
-                label="Numero de celular"
+                label="Teléfono fijo"
                 name="landline_phone"
                 type="number"
                 placeholder="491-88-88"

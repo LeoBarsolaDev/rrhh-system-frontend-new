@@ -9,6 +9,7 @@ import { useState } from "react";
 export default function EmployeesPage(){
     const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
     const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
+    const [selectedRow, setSelectedRow] = useState<number | null>(null);
 
     return(
         <>
@@ -51,7 +52,7 @@ export default function EmployeesPage(){
                         </span>
                     </div>
                     <div className="p-4">
-                        <EmployeeTable infoModalOpen={infoModalOpen} infoModalSetOpen={setInfoModalOpen} editModalOpen={editModalOpen} editModalSetOpen={setEditModalOpen} />
+                        <EmployeeTable selectedRow={selectedRow} setSelectedRow={setSelectedRow} infoModalOpen={infoModalOpen} infoModalSetOpen={setInfoModalOpen} editModalOpen={editModalOpen} editModalSetOpen={setEditModalOpen} />
                     </div>
                     
                     <div className="
@@ -60,15 +61,15 @@ export default function EmployeesPage(){
                         flex justify-end items-center flex-wrap
                         p-4 gap-2
                     ">
-                        <Button color="info" rounded>
+                        <Button color="info" rounded onClick={() => { setInfoModalOpen(true) }} disabled={selectedRow === null} >
                             <FontAwesomeIcon icon={faCircleInfo} />  Ver mas
                         </Button>
 
-                        <Button color="edit" rounded>
+                        <Button color="edit" rounded onClick={() => { setEditModalOpen(true) }} disabled={selectedRow === null}>
                             <FontAwesomeIcon icon={faPencil} />  Editar
                         </Button>
 
-                        <Button color="delete" rounded>
+                        <Button color="delete" rounded disabled={selectedRow === null}>
                             <FontAwesomeIcon icon={faUserSlash} />  Editar Baja
                         </Button>
                     </div>

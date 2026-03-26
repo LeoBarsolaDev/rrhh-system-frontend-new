@@ -6,6 +6,7 @@ import SettingsPage from "./app/features/settings/views/settings"
 import { useEffect, useState } from "react";
 import CreateEmployeePage from "./app/features/employees/views/createEmployee"
 import LoginPage from "./app/features/auth/views/login"
+import RequestsPage from "./app/features/requests/views/RequestsPage"
 
 function App() {
 	const [theme, setTheme] = useState(localStorage.getItem("theme"));
@@ -27,7 +28,7 @@ function App() {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/employees" element={ <EmployeesPage /> } />
 				<Route path="/create-employee" element={<CreateEmployeePage />} />
-				<Route path="/requests" element={<> </>} />
+				<Route path="/requests" element={<RequestsPage />} />
 				<Route path="/settings" element={ <SettingsPage /> } />
 			</Routes>
 		</BrowserRouter>

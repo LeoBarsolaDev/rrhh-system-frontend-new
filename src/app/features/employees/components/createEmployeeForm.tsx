@@ -3,9 +3,9 @@ import Form from "../../../shared/components/form";
 import { Step, Wizard } from "../../../shared/components/wizard";
 import Radio from "../../../shared/components/radio";
 import { faBoxArchive, faUser} from "@fortawesome/free-solid-svg-icons";
-import { CreateemployeeAdminFormContact, CreateemployeeAdminFormPersonal, CreateemployeeAdminFormWork } from "./createEmployeeAdminForm";
+import { CreateEmployeeAdminFormContact, CreateEmployeeAdminFormPersonal, CreateEmployeeAdminFormWork } from "./createEmployeeAdminForm";
 import { Button } from "../../../shared/components/button";
-import { CreateemployeeWorkerFormContact, CreateemployeeWorkerFormPersonal, CreateemployeeWorkerFormWork } from "./createEmployeeWorkerForm";
+import { CreateEmployeeWorkerFormContact, CreateEmployeeWorkerFormPersonal, CreateEmployeeWorkerFormWork } from "./createEmployeeWorkerForm";
 import Input from "../../../shared/components/input";
 
 export default function CreateEmployeeForm(){
@@ -65,18 +65,18 @@ export default function CreateEmployeeForm(){
                 </Step>
 
                 <Step name="Información personal">
-                    {employee_type === "1" && <CreateemployeeAdminFormPersonal />}
-                    {employee_type === "2" && <CreateemployeeWorkerFormPersonal />}
+                    {employee_type === "1" && <CreateEmployeeAdminFormPersonal />}
+                    {employee_type === "2" && <CreateEmployeeWorkerFormPersonal />}
                 </Step>
 
                 <Step name="Información laboral">
-                    {employee_type === "1" && <CreateemployeeAdminFormWork />}
-                    {employee_type === "2" && <CreateemployeeWorkerFormWork />}
+                    {employee_type === "1" && <CreateEmployeeAdminFormWork />}
+                    {employee_type === "2" && <CreateEmployeeWorkerFormWork />}
                 </Step>
 
                 <Step name="Información de contacto">
-                    {employee_type === "1" && <CreateemployeeAdminFormContact />}
-                    {employee_type === "2" && <CreateemployeeWorkerFormContact />}
+                    {employee_type === "1" && <CreateEmployeeAdminFormContact />}
+                    {employee_type === "2" && <CreateEmployeeWorkerFormContact />}
 
                     <Button wide> Guardar empleado </Button>
                 </Step>

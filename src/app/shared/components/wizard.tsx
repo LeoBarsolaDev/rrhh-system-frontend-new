@@ -44,19 +44,19 @@ export function Wizard({ children }: { children: React.ReactNode }) {
     <div className="md:p-4 p-2 w-full h-full flex flex-col bg-frame rounded-2xl">
 
         {/* Indicador de pasos */}
-        <div className="flex justify-between">
+        <div className="flex w-full">
             {steps.map((step, i) => (
-                <span
+                <div
                     key={i}
-                    className="flex flex-col justify-center items-center md:px-6 pt-2 gap-2"
+                    className="flex-1 flex flex-col items-center md:px-6 pt-2 gap-2"
                 >
                     <span
                         className={`
                             w-8 h-8
                             flex justify-center items-center
                             rounded-full
+                            md:mb-0 mb-4
                             text-secondary font-black
-                            sm:mb-0 mb-8
                             ${i <= index ? "bg-primary text-white" : "bg-foreground text-background"}
                             transition-all duration-200
                         `}
@@ -66,15 +66,15 @@ export function Wizard({ children }: { children: React.ReactNode }) {
 
                     <span
                         className={`
-                            font-bold
-                            sm:block hidden
+                            font-bold text-center
+                            sm:block hidden mb-4
                             ${i <= index ? "text-primary" : "text-foreground"}
                             transition-all duration-200
                         `}
                     >
                         {step.props.name}
                     </span>
-                </span>
+                </div>
             ))}
         </div>
 
