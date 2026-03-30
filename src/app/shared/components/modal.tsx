@@ -6,19 +6,23 @@ import type { ModalTypes } from "../types/modalTypes";
 export default function Modal({open, children ,setOpen, styles="", width=""} : ModalTypes){
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") {
-            setOpen(false);
-        }
+            if (e.key === "Escape") {
+                setOpen(false);
+            }
         };
 
-        // Escuchar cuando el modal esté abierto
         if (open) {
-        window.addEventListener("keydown", handleKeyDown);
+            window.addEventListener("keydown", handleKeyDown);
+
+            // 🔒 Bloquear scroll del fondo
+            document.body.style.overflow = "hidden";
         }
 
-        // Limpiar el evento al desmontar o cerrar el modal
         return () => {
-        window.removeEventListener("keydown", handleKeyDown);
+            window.removeEventListener("keydown", handleKeyDown);
+
+            // 🔓 Restaurar scroll
+            document.body.style.overflow = "auto";
         };
     }, [open, setOpen]);
     return(
@@ -39,7 +43,7 @@ export default function Modal({open, children ,setOpen, styles="", width=""} : M
                     w-11/12 md:w-8/10 
                     max-h-9/10
                     flex flex-col 
-                    p-4 rounded-xl shadow-2xl
+                    md:p-4 p-2 rounded-xl shadow-2xl
                     m-8
                     ${width} ${styles}
                 `}

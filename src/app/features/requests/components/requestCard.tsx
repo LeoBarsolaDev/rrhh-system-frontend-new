@@ -5,9 +5,10 @@ import Badge from "../../../shared/components/badge";
 
 interface props {
     request?: Requests;
+    onClick?: () => void;
 }
 
-export default function RequestsCard({request} : props){
+export default function RequestsCard({ request, onClick }: props) {
     const STATUS_MAP = {
         'Sin revisar': 'bg-slate-200 text-slate-800 border-slate-200',
         'En revision': 'bg-blue-100 text-blue-700 border-blue-200',
@@ -15,46 +16,57 @@ export default function RequestsCard({request} : props){
         'Rechazada': 'bg-rose-100 text-rose-700 border-rose-200',
     };
 
-        const PRIORITY_MAP = {
+    const PRIORITY_MAP = {
         'Urgente': 'bg-red-600 text-white border-transparent',
         'Alta': 'bg-orange-100 text-orange-700 border-orange-200',
         'Media': 'bg-amber-100 text-amber-700 border-amber-200',
         'Baja': 'bg-green-100 text-green-700 border-green-200',
     };
 
-    return(
-        <div className="
-            flex w-full h-24 justify-ceter items-center group
-            bg-secondary rounded-2xl
-            hover:bg-surface
-        ">
-            <span className="text-4xl px-4 w-1/10 group-hover:text-primary">
+    return (
+        <div
+            onClick={onClick}
+            className="
+                flex flex-col sm:flex-row w-full
+                gap-2 sm:gap-0
+                p-3 sm:p-4
+                bg-secondary rounded-2xl
+                hover:bg-surface cursor-pointer
+                transition
+            "
+        >
+            {/* ICONO */}
+            <div className="flex justify-center sm:justify-start text-3xl sm:text-4xl sm:mr-4 group-hover:text-primary">
                 <FontAwesomeIcon icon={faBell} />
-            </span>
+            </div>
 
-            <div className="flex flex-col w-5/10 overflow-hidden">
-                <span className="text-xl font-bold group-hover:text-primary">
+            {/* INFO PRINCIPAL */}
+            <div className="flex flex-col flex-1 overflow-hidden">
+                <span className="text-lg sm:text-xl font-bold group-hover:text-primary truncate">
                     {request?.reason}
                 </span>
 
-                <span className="text-sm font-light">
-                    {request?.other_explanation}
+                <span className="text-sm font-light line-clamp-2">
+                    {request?.other_explanation || "..."}
                 </span>
             </div>
 
+            {/* LATERAL (fecha + badges) */}
             <div className="
-                flex flex-col h-full items-end justify-start
-                ml-auto py-2 px-1.5
+                flex flex-col sm:items-end
+                gap-2 sm:gap-1
+                sm:ml-auto
             ">
                 <span className="
-                    text-foreground text-sm
+                    text-xs sm:text-sm
                     bg-surface px-2 py-1 rounded-lg
                     group-hover:font-bold
+                    self-start sm:self-auto
                 ">
                     {request?.request_date}
                 </span>
-                
-                <div className="flex mt-auto gap-1">
+
+                <div className="flex flex-wrap gap-2">
                     <Badge 
                         value={request?.status} 
                         mapping={STATUS_MAP} 
@@ -63,10 +75,10 @@ export default function RequestsCard({request} : props){
                     <Badge 
                         value={request?.priority} 
                         mapping={PRIORITY_MAP} 
-                        className="uppercase" // Puedes pasarle clases extra
+                        className="uppercase"
                     />
                 </div>
             </div>
         </div>
-    )
+    );
 }

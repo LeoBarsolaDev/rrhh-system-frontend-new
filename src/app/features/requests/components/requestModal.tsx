@@ -1,7 +1,30 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "../../../shared/components/button";
 import Modal from "../../../shared/components/modal";
 import type { Requests } from "../types/requestsType";
+import { RenderRequestModule, RequestAdvancesLoans, RequestGeneralInquiry, RequestLeavesOfAbsence, RequestPermits, RequestSickness } from "./requestModules";
+import { faCheck, faCross, faPencil, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export default function RequestModal({request, open, setOpen} : {request:Requests, open:boolean, setOpen: (value: boolean) => void;}){
+export default function RequestModal({request, open, setOpen} : {request:Requests | null, open:boolean, setOpen: (value: boolean) => void;}){
+    const InfoField = ({ label, value }: { label: string; value: string | number | null | undefined }) => (
+        <span className="flex sm:flex-row flex-col md:items-center md:justify-center sm:gap-4">
+            <b className="text-primary">{label}:</b>
+            <span className="text-foreground/90">{value || "N/A"}</span>
+        </span>
+    );
+    const personalInfo = [
+        { label: "Nombre", value: request?.requester_name },
+        { label: "# N° Legajo", value: request?.requester_file_number },
+        { label: "Documento", value: request?.requester_document },
+        { label: "Tipo de empleado", value: request?.requester_type },
+    ];
+
+    const requestInfo = [
+        { label: "Teléfono", value: request?.phone },
+        { label: "Estado", value: request?.status }, // Corregido de .phone a .status
+        { label: "Prioridad", value: request?.priority },
+        { label: "Razón", value: request?.reason },
+    ];
     return(
         <Modal open={open} setOpen={setOpen} >
             <div className="
@@ -17,24 +40,34 @@ export default function RequestModal({request, open, setOpen} : {request:Request
                 hover:[&::-webkit-scrollbar-thumb]:bg-primary/50
             ">
                 {request !== null ? (
-                    <div className="grid grid-cols-2 gap-2">
-                        <div className="bg-secondary py-2 px-4">
-                            <h4 className="text-primary font-semibold text-xl text-center pb-2">Solicitante</h4>
-                            <span className="">
-                                <b>Nombre: </b> {request?.requester_name} <br />
-                                <b># N° Legajo: </b> {request?.requester_file_number} <br />
-                                <b>Numero de documento: </b> {request?.requester_document} <br />
-                                <b>Tipo de empleado: </b> {request?.requester_type} <br />
-                                <b>Teléfono: </b> {request?.phone} <br />
-                            </span>
+                    <div className="flex flex-col gap-2">
+                        <div className="bg-secondary py-2 rounded-2xl">
+                            {request && (
+                                <div className="bg-secondary py-4 rounded-2xl">
+                                    <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center pb-4">Solicitante</h4>
+                                    
+                                    <div className="flex flex-col md:flex-row justify-between gap-4">
+                                        <div className="flex flex-col gap-2 text-sm md:text-md items-center sm:items-start text-center sm:text-left px-4">
+                                        {personalInfo.map((item, index) => (
+                                            <InfoField key={index} label={item.label} value={item.value} />
+                                        ))}
+                                        </div>
+
+                                        <div className="w-full h-1 bg-frame md:hidden my-2 opacity-30" />
+
+                                        <div className="flex flex-col gap-2 text-sm md:text-md items-center sm:items-start md:items-end text-center sm:text-start md:text-right px-4">
+                                        {requestInfo.map((item, index) => (
+                                            <InfoField key={index} label={item.label} value={item.value} />
+                                        ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
-                        <div className="bg-secondary p-1">
-                            <h4 className="text-primary font-semibold text-xl text-center">Informacion de Contácto</h4>
-                        </div>
 
-                        <div className="bg-secondary p-1 col-span-full">
-                            <h4 className="text-primary font-semibold text-xl text-center">Informacion Especifica</h4>
+                        <div className="bg-secondary col-span-full rounded-2xl p-4">
+                            <RenderRequestModule request={request} />
                         </div>
                     </div>
                 ) : ( 
@@ -42,6 +75,18 @@ export default function RequestModal({request, open, setOpen} : {request:Request
                         No se ha logrado cargar la solicitud, por favor reintente mas tarde...
                     </span>
                 )}
+
+                <div className="flex gap-2 w-full">
+                    <div className="bg-secondary py-2 px-4 rounded-2xl mt-2 w-full flex gap-2">
+                        <Button wide rounded color="edit"> <FontAwesomeIcon icon={faPencil} /> Editar Prioridad </Button> 
+                        <Button wide rounded color="clean"> <FontAwesomeIcon icon={faPencil} /> Editar Estado </Button> 
+                    </div>
+
+                    <div className="bg-secondary py-2 px-4 rounded-2xl mt-2 w-full flex gap-2">
+                        <Button wide rounded color="done"> <FontAwesomeIcon icon={faCheck} /> Aceptar Solicitud </Button> 
+                        <Button wide rounded color="delete"> <FontAwesomeIcon icon={faXmark} /> Rechazar Solicitud </Button> 
+                    </div>
+                </div>
             </div>
         </Modal>
     )
