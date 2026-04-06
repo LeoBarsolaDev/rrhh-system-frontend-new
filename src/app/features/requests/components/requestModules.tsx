@@ -2,11 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "../../../shared/components/button";
 import type { Requests } from "../types/requestsType";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { downloadFile } from "../../../shared/hooks/downloadFile";
+
+
 
 export function RequestGeneralInquiry({request} : {request:Requests}){
     return(
         <div className="">
-            <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center">Solicitud por Consulta en General </h4>
+            <h4 className="text-primary font-semibold sm:text-3xl mb-2 text-xl text-center">Solicitud por Consulta en General </h4>
             <h2 className="text-foreground text-xl font-bold"> Detalles </h2>
             <div className="bg-surface rounded-2xl w-full min-h-24 italic p-4 text-placeholder font-semibold">
                 {request.other_explanation === "" ? <>"..."</> : <> "{request.other_explanation}" </>}
@@ -23,7 +26,7 @@ export function RequestAdvancesLoans({request} : {request:Requests}){
 
     return(
         <div className="flex flex-col gap-2">
-            <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center">Solicitud de Prestamo / Adelanto</h4>
+            <h4 className="text-primary font-semibold sm:text-3xl mb-2 text-xl text-center">Solicitud de Prestamo / Adelanto</h4>
             <div className="w-full py-2 px-4 bg-surface text-xl rounded-2xl">
                 Monto solicitado: <span className="italic font-bold"> $ {amount}</span>
             </div>
@@ -39,15 +42,15 @@ export function RequestAdvancesLoans({request} : {request:Requests}){
 export function RequestSickness({request} : {request:Requests}){
     return(
         <div className="flex flex-col gap-2">
-            <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center"> Solicitud por Enfermedad </h4>
+            <h4 className="text-primary font-semibold sm:text-3xl mb-2 text-xl text-center"> Solicitud por Enfermedad </h4>
             <div className="flex md:flex-row flex-col gap-2">
                 <div className="bg-surface rounded-2xl w-full py-2 px-4 text-placeholder font-semibold">
                     {request.diagnosis === null ? <>"Diagnostico: No proporcionado"</> : <> Diagnostico: <span className="italic font-bold"> "{request.diagnosis}"</span> </>}
                 </div>
 
-                <Button wide rounded>
+                <Button onClick={() => downloadFile(request.attached_file)} disabled={request.attached_file == null} wide rounded>
                     <FontAwesomeIcon icon={faDownload} />
-                    Descargar certificado
+                    {request.attached_file == null ? "Certificado No Encontrado" : "Descargar Certificado"}
                 </Button>
             </div>
 
@@ -62,7 +65,7 @@ export function RequestSickness({request} : {request:Requests}){
 export function RequestPermits({request} : {request:Requests}){
     return(
         <div className="flex flex-col gap-2">
-            <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center">Solicitud de Permiso </h4>
+            <h4 className="text-primary font-semibold sm:text-3xl mb-2 text-xl text-center">Solicitud de Permiso </h4>
 
             <div className="flex gap-2">
                 <div className="bg-surface rounded-2xl w-full py-2 px-4 text-placeholder font-semibold">
@@ -72,8 +75,12 @@ export function RequestPermits({request} : {request:Requests}){
                 <div className="bg-surface rounded-2xl w-full py-2 px-4 text-placeholder font-semibold">
                     {request.init_date === null ? <>Fecha de inicio: "No proporcionada"</> : <> Fecha de inicio: <span className="italic font-bold"> "{request.init_date}"</span> </>}
                 </div>
+                
             </div>
-            
+            <Button onClick={() => downloadFile(request.attached_file)} disabled={request.attached_file == null} wide rounded>
+                <FontAwesomeIcon icon={faDownload} />
+                {request.attached_file == null ? "Permiso No Encontrado" : "Descargar Permiso Firmado"}
+            </Button>
             <h2 className="text-foreground text-xl font-bold"> Detalles </h2>
             <div className="bg-surface rounded-2xl w-full min-h-24 italic p-4 text-placeholder font-semibold">
                 {request.other_explanation === "" ? <>"..."</> : <> "{request.other_explanation}" </>}
@@ -85,7 +92,7 @@ export function RequestPermits({request} : {request:Requests}){
 export function RequestScheduleChanges({request} : {request:Requests}){
     return(
         <div className="">
-            <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center">Solicitud de Cambio de Horario </h4>
+            <h4 className="text-primary font-semibold sm:text-3xl mb-2 text-xl text-center">Solicitud de Cambio de Horario </h4>
             <h2 className="text-foreground text-xl font-bold"> Detalles </h2>
             <div className="bg-surface rounded-2xl w-full min-h-24 italic p-4 text-placeholder font-semibold">
                 {request.other_explanation === "" ? <>"..."</> : <> "{request.other_explanation}" </>}
@@ -97,7 +104,7 @@ export function RequestScheduleChanges({request} : {request:Requests}){
 export function RequestLeavesOfAbsence({request} : {request:Requests}){
     return(
         <div className="flex flex-col gap-2">
-            <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center">Solicitud de Licencia </h4>
+            <h4 className="text-primary font-semibold sm:text-3xl mb-2 text-xl text-center">Solicitud de Licencia </h4>
 
             <div className="flex gap-2">
                 <div className="bg-surface rounded-2xl w-full py-2 px-4 text-placeholder font-semibold">
@@ -118,7 +125,7 @@ export function RequestLeavesOfAbsence({request} : {request:Requests}){
 export function RequestOther({request} : {request:Requests}){
     return(
         <div className="">
-            <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center">Solicitud de Cambio de Horario </h4>
+            <h4 className="text-primary font-semibold sm:text-3xl mb-2 text-xl text-center">Solicitud de Cambio de Horario </h4>
             <h2 className="text-foreground text-xl font-bold"> Detalles </h2>
             <div className="bg-surface rounded-2xl w-full min-h-24 italic p-4 text-placeholder font-semibold">
                 {request.other_explanation === "" ? <>"..."</> : <> "{request.other_explanation}" </>}
@@ -132,7 +139,7 @@ export function RenderRequestModule({ request }: { request?: Requests }) {
     if (!request) return null;
 
     switch (request.reason) {
-        case "Consultas en general":
+        case "Consulta":
             return <RequestGeneralInquiry request={request} />;
 
         case "Adelantos/Prestamos":
@@ -141,16 +148,16 @@ export function RenderRequestModule({ request }: { request?: Requests }) {
         case "Enfermedad":
             return <RequestSickness request={request} />;
 
-        case "Permisos":
+        case "Permiso":
             return <RequestPermits request={request} />;
 
-        case "Horarios":
+        case "Horario":
             return <RequestScheduleChanges request={request} />;
 
-        case "Licencias (Vacaciones, nacimiento, etc)":
+        case "Licencia":
             return <RequestLeavesOfAbsence request={request} />;
 
-        case "Otros":
+        case "Otro":
             return <RequestOther request={request} />;
 
         default:

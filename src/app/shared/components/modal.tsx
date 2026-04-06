@@ -32,7 +32,7 @@ export default function Modal({open, children ,setOpen, styles="", width=""} : M
                 bg-black/60 backdrop-blur-sm
                 flex justify-center items-center
                 
-                transition-all duration-300
+                transition-all duration-150
                 ${open ? "opacity-100 visible" : "opacity-0 invisible"}
             `}
             onClick={() => setOpen(false)}

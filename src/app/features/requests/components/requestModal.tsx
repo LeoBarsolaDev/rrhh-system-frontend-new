@@ -7,7 +7,7 @@ import { faCheck, faCross, faPencil, faXmark } from "@fortawesome/free-solid-svg
 
 export default function RequestModal({request, open, setOpen} : {request:Requests | null, open:boolean, setOpen: (value: boolean) => void;}){
     const InfoField = ({ label, value }: { label: string; value: string | number | null | undefined }) => (
-        <span className="flex sm:flex-row flex-col md:items-center md:justify-center sm:gap-4">
+        <span className="flex sm:flex-row flex-col md:items-center md:justify-center sm:gap-4 text-lg">
             <b className="text-primary">{label}:</b>
             <span className="text-foreground/90">{value || "N/A"}</span>
         </span>
@@ -44,10 +44,10 @@ export default function RequestModal({request, open, setOpen} : {request:Request
                         <div className="bg-secondary py-2 rounded-2xl">
                             {request && (
                                 <div className="bg-secondary py-4 rounded-2xl">
-                                    <h4 className="text-primary font-semibold sm:text-2xl text-xl text-center pb-4">Solicitante</h4>
+                                    <h4 className="text-primary font-semibold sm:text-3xl text-xl text-center pb-4">Solicitante</h4>
                                     
                                     <div className="flex flex-col md:flex-row justify-between gap-4">
-                                        <div className="flex flex-col gap-2 text-sm md:text-md items-center sm:items-start text-center sm:text-left px-4">
+                                        <div className="flex flex-col text-sm md:text-md items-center sm:items-start text-center sm:text-left px-4">
                                         {personalInfo.map((item, index) => (
                                             <InfoField key={index} label={item.label} value={item.value} />
                                         ))}
@@ -55,7 +55,7 @@ export default function RequestModal({request, open, setOpen} : {request:Request
 
                                         <div className="w-full h-1 bg-frame md:hidden my-2 opacity-30" />
 
-                                        <div className="flex flex-col gap-2 text-sm md:text-md items-center sm:items-start md:items-end text-center sm:text-start md:text-right px-4">
+                                        <div className="flex flex-col text-sm md:text-md items-center sm:items-start md:items-end text-center sm:text-start md:text-right px-4">
                                         {requestInfo.map((item, index) => (
                                             <InfoField key={index} label={item.label} value={item.value} />
                                         ))}

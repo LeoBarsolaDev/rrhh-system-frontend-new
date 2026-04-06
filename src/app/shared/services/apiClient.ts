@@ -1,7 +1,7 @@
 import { getToken } from "./authService";
 
  
-const API_BASE_URL = 'http://127.0.0.1:5000';
+export const API_BASE_URL = 'http://127.0.0.1:5000';
 
 async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const token = getToken();

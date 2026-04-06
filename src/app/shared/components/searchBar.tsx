@@ -15,22 +15,22 @@ function SearchBar({ value, onChange }: props){
             group
         ">
             <span className="
-                text-surface
+                text-placeholder 
                 group-focus-within:text-primary
                 transition-all duration-150
             ">
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </span>
             <input 
-            type="text" 
-            placeholder="Buscar"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            className="
-                text-surface font-semibold
-                w-full h-4
-                focus:outline-none focus:text-primary
-                transition-all duration-150
+                type="text" 
+                placeholder="Buscar"
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                className="
+                    text-placeholder font-semibold placeholder:text-placeholder 
+                    w-full h-4
+                    focus:outline-none focus:text-primary
+                    transition-all duration-150
             "/>
         </div>
     )

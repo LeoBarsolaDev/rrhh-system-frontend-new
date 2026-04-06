@@ -60,6 +60,46 @@
     
         --color-shadow: rgba(29, 44, 76, 30);
     }
+
+    :root[data-theme="sakura"] {
+        --color-background: #F7E9E7;
+        --color-frame: #E6C7C3;
+        --color-secondary: #D9AFAF;
+        --color-surface: #C89295;
+        --color-placeholder: #F2D6D3;
+        --color-foreground: #3A2E2F;
+        --color-primary: #B84C65; /* acento rosado fuerte */
+        --color-separator: #EAD8D5;
+
+        --color-shadow: rgba(184, 76, 101, 0.08);
+    }
+
+    :root[data-theme="slate"] {
+        --color-background: #0F172A;
+        --color-frame: #1E293B;
+        --color-secondary: #334155;
+        --color-surface: #475569;
+        --color-placeholder: #94A3B8;
+        --color-foreground: #E2E8F0;
+        --color-primary: #38BDF8; /* acento frío tipo cyan */
+        --color-separator: #1E293B;
+
+        --color-shadow: rgba(0, 0, 0, 0.25);
+    }
+
+    :root[data-theme="synthwave"] {
+        --color-background: #0B0F1A;   /* fondo noche profundo */
+        --color-frame: #141A2A;        /* paneles */
+        --color-secondary: #1F2A44;    /* capas intermedias */
+        --color-surface: #2A3A5E;      /* superficies */
+        --color-placeholder: #7C8DB5;  /* texto tenue */
+        --color-foreground: #E6E9FF;   /* texto principal */
+
+        --color-primary: #FF4D8D;      /* neon pink */
+        --color-separator: #1A2238;
+
+        --color-shadow: rgba(255, 77, 141, 0.15);
+    }
 }
 
 html,

@@ -78,6 +78,33 @@ export default function SettingsPage(){
                             >
                                 <span className="flex flex-col h-full items-center gap-2"> <ColorSample color="#121212"/> Oscuro </span>
                             </Radio>
+
+                            <Radio
+                                name="theme"
+                                value="sakura"
+                                selected={theme}
+                                onChange={setTheme}
+                            >
+                                <span className="flex flex-col h-full items-center gap-2"> <ColorSample color="#B84C65"/> Sakura </span>
+                            </Radio>
+
+                            <Radio
+                                name="theme"
+                                value="slate"
+                                selected={theme}
+                                onChange={setTheme}
+                            >
+                                <span className="flex flex-col h-full items-center gap-2"> <ColorSample color="#475569"/> Frio </span>
+                            </Radio>
+
+                            <Radio
+                                name="theme"
+                                value="synthwave"
+                                selected={theme}
+                                onChange={setTheme}
+                            >
+                                <span className="flex flex-col h-full items-center gap-2"> <ColorSample color="#FF4D8D"/> SynthWave </span>
+                            </Radio>
                         </div>
                     </div>
                 </Frame>

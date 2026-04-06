@@ -33,6 +33,7 @@ export default function RequestsCard({ request, onClick }: props) {
                 bg-secondary rounded-2xl
                 hover:bg-surface cursor-pointer
                 transition
+                relative
             "
         >
             {/* ICONO */}
@@ -58,8 +59,8 @@ export default function RequestsCard({ request, onClick }: props) {
                 sm:ml-auto
             ">
                 <span className="
-                    text-xs sm:text-sm
-                    bg-surface px-2 py-1 rounded-lg
+                    text-xs sm:text-sm mb-1
+                    bg-surface px-1 py-0.5 rounded
                     group-hover:font-bold
                     self-start sm:self-auto
                 ">

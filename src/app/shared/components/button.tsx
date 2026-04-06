@@ -42,11 +42,12 @@ export function Button({
             px-4 py-1 outline-none
             text-white font-bold
             flex justify-center items-center gap-2
+            
             ${bg}
             ${style}
             ${wide ? "w-full" : ""}
             ${rounded ? "rounded-2xl" : ""}
-            ${disabled ? "opacity-50 cursor-not-allowed" : "hover:brightness-125"}
+            ${disabled ? "opacity-50 cursor-not-allowed" : "hover:brightness-110 hover:cursor-pointer"}
             transition-all duration-150
             text-lg
         `}

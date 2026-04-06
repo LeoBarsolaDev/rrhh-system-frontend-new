@@ -3,6 +3,7 @@ import SearchBar from "../../../shared/components/searchBar";
 import useEmployeeTable from "../hooks/useEmployeeTable"; 
 import EmployeeInfoModal from "./employeeInfoModal";
 import EmployeeEditModal from "./employeeEditModal";
+import { useState } from "react";
 
 interface props {
     selectedRow: number | null;
@@ -18,15 +19,20 @@ export default function EmployeeTable({selectedRow, setSelectedRow, infoModalOpe
         employees,
         rows,
     } = useEmployeeTable();
-
+    
+    const [searchText, setSearchText] = useState<string>("")
     const selectedEmployee = selectedRow !== null ? employees[selectedRow] : null;
 
     return(
         <div className="w-full h-full">
-            <SearchBar value={""} onChange={() => {}} />
+            <SearchBar value={searchText} onChange={(val) => setSearchText(val)} />
             <Table
                 data={rows}
                 selectedRow={selectedRow}
+                search={{
+                    query: searchText,
+                    // columns: ["# N° LEGAJO", "NOMBRE COMPLETO"]
+                }}
                 onRowClick={(row, index) => {
                     setSelectedRow(index);
                 }}
