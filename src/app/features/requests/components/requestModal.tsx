@@ -42,7 +42,7 @@ export default function RequestModal({request, open, setOpen} : {request:Request
         <Modal open={open} setOpen={setOpen} >
             <Alert show={alertOpen} onClose={() => {setAlertOpen(false)}} type={alertType}> {alertMessage} </Alert>
             <div className="
-                w-full py-2 px-0 flex flex-col gap-0 h-full
+                w-full pb-2 py-8 px-0 flex flex-col gap-0 h-full
                 /* Configuración de Scroll */
                 overflow-y-auto overflow-x-hidden
                 /* Estilización del Scrollbar (Chrome, Safari, Edge) */
@@ -62,17 +62,17 @@ export default function RequestModal({request, open, setOpen} : {request:Request
                                     
                                     <div className="flex flex-col md:flex-row justify-between gap-4">
                                         <div className="flex flex-col text-sm md:text-md items-center sm:items-start text-center sm:text-left px-4">
-                                        {personalInfo.map((item, index) => (
-                                            <InfoField key={index} label={item.label} value={item.value} />
-                                        ))}
+                                            {personalInfo.map((item, index) => (
+                                                <InfoField key={index} label={item.label} value={item.value} />
+                                            ))}
                                         </div>
 
                                         <div className="w-full h-1 bg-frame md:hidden my-2 opacity-30" />
 
                                         <div className="flex flex-col text-sm md:text-md items-center sm:items-start md:items-end text-center sm:text-start md:text-right px-4">
-                                        {requestInfo.map((item, index) => (
-                                            <InfoField key={index} label={item.label} value={item.value} />
-                                        ))}
+                                            {requestInfo.map((item, index) => (
+                                                <InfoField key={index} label={item.label} value={item.value} />
+                                            ))}
                                         </div>
                                     </div>
                                 </div>

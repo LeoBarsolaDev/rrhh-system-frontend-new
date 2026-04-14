@@ -12,7 +12,8 @@ export default function useEmployeeStatusModal(employee: any){
 
             response = await api.patch("/rrhh/employees", {
                 emp_id: employee.id,
-                status: employee.status === "Activo" ? "De baja" : "Activo"
+                status: employee.status === "Activo" ? "De baja" : "Activo",
+                ...(employee.status === "Activo" && { separation_date: new Date().toISOString().split('T')[0] })
             });
 
 

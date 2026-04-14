@@ -27,21 +27,18 @@ export default function RequestsCard({ request, onClick }: props) {
         <div
             onClick={onClick}
             className="
-                flex flex-col sm:flex-row w-full
+                flex flex-col sm:flex-row w-full sm:items-center
                 gap-2 sm:gap-0
                 p-3 sm:p-4
                 bg-secondary rounded-2xl
                 hover:bg-surface cursor-pointer
-                transition
-                relative
             "
         >
-            {/* ICONO */}
-            <div className="flex justify-center sm:justify-start text-3xl sm:text-4xl sm:mr-4 group-hover:text-primary">
+            <div className="flex justify-center sm:justify-start text-3xl sm:text-4xl sm:mr-4 group-hover:text-primary relative">
                 <FontAwesomeIcon icon={faBell} />
+                {request?.status == "Sin revisar" ? <span className="absolute h-2 w-2 bg-red-500 rounded-full"></span> : <></>}
             </div>
 
-            {/* INFO PRINCIPAL */}
             <div className="flex flex-col flex-1 overflow-hidden">
                 <span className="text-lg sm:text-xl font-bold group-hover:text-primary truncate">
                     {request?.reason}
@@ -52,14 +49,13 @@ export default function RequestsCard({ request, onClick }: props) {
                 </span>
             </div>
 
-            {/* LATERAL (fecha + badges) */}
             <div className="
                 flex flex-col sm:items-end
                 gap-2 sm:gap-1
                 sm:ml-auto
             ">
                 <span className="
-                    text-xs sm:text-sm mb-1
+                    text-xs sm:text-sm mb-2
                     bg-surface px-1 py-0.5 rounded
                     group-hover:font-bold
                     self-start sm:self-auto

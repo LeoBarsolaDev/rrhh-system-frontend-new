@@ -17,7 +17,7 @@ const Badge: React.FC<BadgeProps> = ({
   const colorClass = (value && mapping[value]) ? mapping[value] : fallback;
 
   return (
-    <span className={`px-2 py-0.5 rounded-lg text-sm font-bold border ${colorClass} ${className}`}>
+    <span className={`flex flex-col justify-center items-center px-2 py-1 rounded-xl text-sm font-bold border ${colorClass} ${className}`}>
       {value || 'Sin especificar'}
     </span>
   );
