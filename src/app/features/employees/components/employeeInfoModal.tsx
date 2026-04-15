@@ -1,5 +1,4 @@
 import Modal from "../../../shared/components/modal";
-import { Step, Wizard } from "../../../shared/components/wizard";
 
 export interface props {
   open: boolean;

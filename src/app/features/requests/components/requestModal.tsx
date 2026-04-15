@@ -2,9 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "../../../shared/components/button";
 import Modal from "../../../shared/components/modal";
 import type { Requests } from "../types/requestsType";
-import { RenderRequestModule, RequestAdvancesLoans, RequestGeneralInquiry, RequestLeavesOfAbsence, RequestPermits, RequestSickness } from "./requestModules";
-import { faCheck, faCheckDouble, faCross, faPencil, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { RenderRequestModule } from "./requestModules";
+import { faCheck, faCheckDouble, faPencil, faXmark } from "@fortawesome/free-solid-svg-icons";
 import useRequestModal from "../hooks/useRequestModal";
 import { Alert } from "../../../shared/components/alert";
 

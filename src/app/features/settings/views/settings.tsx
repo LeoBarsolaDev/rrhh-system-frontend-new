@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Frame from "../../../shared/components/frame";
 import Sidebar from "../../../shared/components/sidebar";
-import { Subtitle, Title } from "../../../shared/components/text";
+import { Subtitle } from "../../../shared/components/text";
 import { faBrush, faGear } from "@fortawesome/free-solid-svg-icons";
 import Radio from "../../../shared/components/radio";
 import { useEffect, useState } from "react";

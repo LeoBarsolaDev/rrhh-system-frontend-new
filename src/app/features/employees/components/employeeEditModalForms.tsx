@@ -118,7 +118,7 @@ export function EditEmployeeFormWorkerWork({employee} : {employee:EmployeeType})
     )
 }
 
-export function EditEmployeeFormAdminWork({employee} : {employee:EmployeeType}){
+export function EditEmployeeFormAdminWork(){
     return(
         <div className="flex flex-col justify-center mb-2">
             <Dropdown
@@ -195,7 +195,7 @@ export function EditEmployeeFormAdminWork({employee} : {employee:EmployeeType}){
     )
 }
 
-export function EditEmployeeContact({employee} : {employee:EmployeeType}){
+export function EditEmployeeContact(){
     return(
         <div className="flex flex-col justify-center mb-2">
             <Input 

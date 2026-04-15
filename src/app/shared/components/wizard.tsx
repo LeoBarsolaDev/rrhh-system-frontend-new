@@ -1,17 +1,15 @@
-import type { ReactNode } from "react";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "./button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong, faRightLong } from "@fortawesome/free-solid-svg-icons";
 
 export function Step({ children, name } : { children:React.ReactNode, name:string }){
-    return <> { children } </>
+    return <span key={name}> { children } </span>
 }
 
 export function Wizard({ children }: { children: React.ReactNode }) {
     const steps = React.Children.toArray(children) as React.ReactElement[];
     const [index, setIndex] = useState(0);
-    const stepRef = useRef<HTMLDivElement>(null);
 
     const next = () => {
         // Validamos solo el paso actual antes de avanzar
@@ -41,12 +39,12 @@ export function Wizard({ children }: { children: React.ReactNode }) {
                 {i + 1}
                 </span>
                 <span className={`font-bold sm:block text-center hidden transition-all duration-200 ${i <= index ? "text-primary" : "text-foreground"}`}>
-                {step.props.name}
+                {(step as any).props.name}
                 </span>
             </span>
             ))}
         </div>
-        <h4 className="text-center text-primary uppercase font-bold sm:hidden block">{steps[index].props.name}</h4>
+        <h4 className="text-center text-primary uppercase font-bold sm:hidden block">{(steps[index] as any).props.name}</h4>
         <hr className="border-secondary my-4" />
 
         {/* RENDERIZADO DE PASOS: Ahora no se desmontan */}

@@ -28,13 +28,13 @@ export default function Form({ url, children, onSuccess, onError, className = "p
 
         try {
             let response: any;
-            const config = hasFiles ? { headers: { 'Content-Type': 'multipart/form-data' } } : {};
+            // const config = hasFiles ? { headers: { 'Content-Type': 'multipart/form-data' } } : {};
 
             if(method.toLowerCase() === "post") {
-                response = await api.post(url, dataToSend, config);
+                response = await api.post(url, dataToSend);
             }
             if(method.toLowerCase() === "patch") {
-                response = await api.patch(url, dataToSend, config);
+                response = await api.patch(url, dataToSend);
             }
 
             if (onSuccess) onSuccess(response);

@@ -42,7 +42,6 @@ export default function EmployeeTable({
 
     const renderEmployeeCell = (key: string, value: any) => {
         if (key === "Estado") {
-            const isActive = value === "Activo";
             return (
                 <Badge 
                     value={value} 
@@ -68,6 +67,7 @@ export default function EmployeeTable({
                     // columns: ["# N° LEGAJO", "NOMBRE COMPLETO"]
                 }}
                 onRowClick={(row, index) => {
+                    console.log(row)
                     setSelectedRow(index);
                 }}
             />

@@ -53,7 +53,7 @@ export default function EmployeeEditModal({open, setOpen, employee} : props){
 
                             <Step name="Información Laboral">
                                 <span className="text-primary text-2xl font-bold text-center"> {employee.type} </span>
-                                    {employee.type === "Administrativo" && <EditEmployeeFormAdminWork employee={employee} />}
+                                    {employee.type === "Administrativo" && <EditEmployeeFormAdminWork />}
                                     {employee.type === "Obrero" && <EditEmployeeFormWorkerWork employee={employee} />}
                                     <input type="hidden" name="emp_id" defaultValue={employee.id} />
                                     <Button type="submit" rounded wide> { isSending ? "Guardando..." : "Guardar" } </Button>
@@ -61,7 +61,7 @@ export default function EmployeeEditModal({open, setOpen, employee} : props){
 
                             <Step name="Información de Contacto">
                                 <span className="text-primary text-2xl font-bold text-center"> {employee.type} </span>
-                                    <EditEmployeeContact employee={employee} />
+                                    <EditEmployeeContact />
                                     <input type="hidden" name="emp_id" defaultValue={employee.id} />
                                     <Button type="submit" rounded wide> { isSending ? "Guardando..." : "Guardar" } </Button>
                             </Step>

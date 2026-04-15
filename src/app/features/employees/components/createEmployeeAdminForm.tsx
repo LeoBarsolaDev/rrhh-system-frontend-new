@@ -1,4 +1,4 @@
-import { faBirthdayCake, faBuilding, faCalendarPlus, faChurch, faEnvelope, faHouse, faIdCard, faLayerGroup, faMobile, faPhone, faSitemap, faUsers, faVenusMars } from "@fortawesome/free-solid-svg-icons";
+import { faBirthdayCake, faCalendarPlus, faChurch, faEnvelope, faHouse, faIdCard, faMobile, faPhone, faVenusMars } from "@fortawesome/free-solid-svg-icons";
 import Input from "../../../shared/components/input";
 import Dropdown from "../../../shared/components/dropdown";
 
