@@ -1,6 +1,7 @@
-import { faBirthdayCake, faCalendarPlus, faChurch, faEnvelope, faHouse, faIdCard, faMobile, faPhone, faVenusMars } from "@fortawesome/free-solid-svg-icons";
+import { faBirthdayCake, faBriefcase, faBuilding, faCalendarPlus, faChurch, faCodeBranch, faEnvelope, faHouse, faIdCard, faMobile, faPhone, faTags, faVenusMars } from "@fortawesome/free-solid-svg-icons";
 import Input from "../../../shared/components/input";
 import Dropdown from "../../../shared/components/dropdown";
+import { useState } from "react";
 
 export function CreateEmployeeAdminFormPersonal(){
     return(
@@ -60,8 +61,17 @@ export function CreateEmployeeAdminFormPersonal(){
     )
 }
 
-export function CreateEmployeeAdminFormWork(){
-    // TODO: AGREGAR CATEGORIAS Y SUBCATEGORIAS
+export function CreateEmployeeAdminFormWork({categories} : {categories: any}){
+    const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
+
+    const handleCategoryChange = (value: string) => {
+        setSelectedCategoryId(value);
+    };
+
+    const selectedCategory = categories?.admin_categories?.find(
+        (cat: any) => cat.id.toString() === selectedCategoryId.toString()
+    );
+
     return(
         <div className="p-2 flex flex-col justify-center">
             <span className="text-primary font-bold text-center"> Administrativo </span>
@@ -70,27 +80,34 @@ export function CreateEmployeeAdminFormWork(){
             <Dropdown
                 label="Categoria"
                 name="category"
-                options={[
-                    {name:'Administrativo', id:'1'}, 
-                    {name:'Tecnico', id:'2'}, 
-                    {name:'Vendedor', id:'3'}, 
-                    {name:'Maestranza', id:'4'},
-                ]}
+                icon={faTags}
+                options={categories.admin_categories.map((cat: any) => ({
+                    name: cat.name, 
+                    id: cat.id
+                }))}
+                onChange={handleCategoryChange} // Ahora recibirá el ID correcto
                 required
             />
 
             <Dropdown
                 label="Sub-categoria"
                 name="subcategory"
+                icon={faCodeBranch}
                 required
-                options={[
-                    {name:'...', id:'1'}, 
-                ]}
+                options={
+                    selectedCategory?.subcategories?.length > 0 
+                        ? selectedCategory.subcategories.map((sub: any) => ({
+                            name: `${selectedCategory.name} de ${sub.name}`, 
+                            id: sub.id
+                        }))
+                        : [{ name: "Sin subcategorías", id: "0" }]
+                }
             />
 
             <Dropdown
                 label="Area"
                 name="area" // Corregido el name
+                icon={faBuilding}
                 required
                 options={[
                     {name:'EMPRENDEDORA', id:'1'}, 
@@ -107,6 +124,7 @@ export function CreateEmployeeAdminFormWork(){
             <Dropdown
                 label="Departamento"
                 name="department"
+                icon={faBriefcase}
                 required
                 options={[
                     { name: 'OFICINA CENTRAL', id: "1" },

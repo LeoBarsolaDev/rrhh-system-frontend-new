@@ -83,8 +83,8 @@ export default function CreateEmployeeForm(){
                 </Step>
 
                 <Step name="Información laboral">
-                    {employee_type === "Administrativo" && <CreateEmployeeAdminFormWork />}
-                    {employee_type === "Obrero" && <CreateEmployeeWorkerFormWork />}
+                    {employee_type === "Administrativo" && <CreateEmployeeAdminFormWork categories={categories}/>}
+                    {employee_type === "Obrero" && <CreateEmployeeWorkerFormWork categories={categories} />}
                 </Step>
 
                 <Step name="Información de contacto">

@@ -1,6 +1,7 @@
-import { faBirthdayCake, faCalendarPlus, faChurch, faEnvelope, faHouse, faIdCard, faLayerGroup, faMobile, faPhone, faSitemap, faVenusMars } from "@fortawesome/free-solid-svg-icons";
+import { faBirthdayCake, faCalendarPlus, faChurch, faCodeBranch, faEnvelope, faHouse, faIdCard, faMobile, faPhone, faSitemap, faTags, faVenusMars } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "../../../shared/components/dropdown";
 import Input from "../../../shared/components/input";
+import { useState } from "react";
 
 export function CreateEmployeeWorkerFormPersonal(){
     return(
@@ -60,36 +61,46 @@ export function CreateEmployeeWorkerFormPersonal(){
     )
 }
 
-export function CreateEmployeeWorkerFormWork(){
+export function CreateEmployeeWorkerFormWork({categories} : {categories: any}){
+    const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
+
+    const handleCategoryChange = (value: string) => {
+        setSelectedCategoryId(value);
+    };
+
+    const selectedCategory = categories?.worker_categories?.find(
+        (cat: any) => cat.id.toString() === selectedCategoryId.toString()
+    );
+
     return(
         <div className="p-2 flex flex-col justify-center">
             <span className="text-primary font-bold text-center"> Obrero </span>
             
-            {/* FK: ID numérico */}
             <Dropdown
                 label="Categoria"
-                icon={faLayerGroup}
                 name="category"
-                placeholder="Seleccione la Categoria"
+                icon={faTags}
+                options={categories.worker_categories.map((cat: any) => ({
+                    name: cat.name, 
+                    id: cat.id
+                }))}
+                onChange={handleCategoryChange} // Ahora recibirá el ID correcto
                 required
-                options={[
-                    {name:'Capataz', id:'1'}, 
-                    {name:'Oficial Especialista', id:'2'}, 
-                    {name:'Oficial', id:'3'}, 
-                    {name:'Ayudante', id:'4'},
-                ]}
             />
 
-            {/* FK: ID numérico */}
             <Dropdown
                 label="Sub-categoria"
-                icon={faSitemap}
                 name="subcategory"
-                placeholder="Seleccione la Sub-categoria"
+                icon={faCodeBranch}
                 required
-                options={[
-                    {name:'UOCRA', id:'1'}, 
-                ]}
+                options={
+                    selectedCategory?.subcategories?.length > 0 
+                        ? selectedCategory.subcategories.map((sub: any) => ({
+                            name: `${selectedCategory.name} de ${sub.name}`, 
+                            id: sub.id
+                        }))
+                        : [{ name: "Sin subcategorías", id: "0" }]
+                }
             />
 
             {/* FK: ID numérico (Mapeado al campo 'field' de la DB) */}
