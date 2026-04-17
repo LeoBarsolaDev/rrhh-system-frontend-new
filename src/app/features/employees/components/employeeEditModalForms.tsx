@@ -33,7 +33,7 @@ export function EditEmployeeFormPersonal({employee} : {employee:EmployeeType}){
             <Input 
                 label="CUIL"
                 name="cuil"
-                type="number"
+                type="text"
                 placeholder={employee.cuil.toString()}
                 icon={faIdCard}
                 // required
@@ -211,7 +211,7 @@ export function EditEmployeeContact(){
             <Input 
                 label="Numero de celular"
                 name="mobile_phone"
-                type="number"
+                type="text"
                 placeholder="2648-888-888"
                 icon={faMobile}
                 // required

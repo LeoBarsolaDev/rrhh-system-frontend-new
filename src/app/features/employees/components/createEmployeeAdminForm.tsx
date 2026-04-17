@@ -24,7 +24,7 @@ export function CreateEmployeeAdminFormPersonal(){
             />
 
             <Input required label="Numero de documento" placeholder="88.888.888" name="document_number" type="number" icon={faIdCard} />
-            <Input required label="CUIL" placeholder="80-88.888.888-8" name="cuil" type="number" icon={faIdCard} />
+            <Input required label="CUIL" placeholder="80-88.888.888-8" name="cuil" type="text" icon={faIdCard} />
 
             {/* ENUM: ID igual al Nombre */}
             <Dropdown
@@ -162,7 +162,7 @@ export function CreateEmployeeAdminFormContact(){
             <Input 
                 label="Numero de celular"
                 name="mobile_phone"
-                type="number"
+                type="text"
                 placeholder="2648-888-888"
                 icon={faMobile}
                 required
