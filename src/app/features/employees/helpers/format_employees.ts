@@ -6,7 +6,7 @@ export default function format_employees (employees: EmployeeType[]): EmployeeTa
         "# N° Legajo": emp.file_number,
         "N° Documento": emp.document_number.toString(),
         "Nombre completo": emp.full_name,
-        "Rubro": emp.area_name || "Sin Área",
+        "Area / Rubro": (emp.area_name || emp.field_name) || "No registrado",
         "Categoria": emp.category_name || "Sin Categoría",
         "Estado": emp.status,
     }));

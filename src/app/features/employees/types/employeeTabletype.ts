@@ -4,7 +4,7 @@ export interface EmployeeTableType {
   "# N° Legajo": number;
   "N° Documento": string;
   "Nombre completo": string;
-  "Rubro": string;
+  "Area / Rubro": string;
   "Categoria": string;
   "Estado": "Activo" | "De baja";
 }
