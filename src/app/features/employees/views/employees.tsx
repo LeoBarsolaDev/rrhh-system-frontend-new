@@ -4,13 +4,19 @@ import EmployeeTable from "../components/employeesTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faPencil, faUserPlus, faUserSlash, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../../../shared/components/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { verifySession } from "../../../shared/services/apiClient";
 
 export default function EmployeesPage(){
     const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
     const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
     const [statusModalOpen, setStatusModalOpen] = useState<boolean>(false);
     const [selectedRow, setSelectedRow] = useState<number | null>(null);
+
+    useEffect(() => {
+        // Verificamos la sesión apenas carga la app
+        verifySession();
+    }, []);
 
     return(
         <>
