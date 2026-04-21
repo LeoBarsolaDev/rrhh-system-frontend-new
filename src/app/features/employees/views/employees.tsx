@@ -21,7 +21,7 @@ export default function EmployeesPage(){
                     md:min-h-screen min-h-[calc(100dvh-6rem)]  flex justify-center items-center
                 "
             >
-                <Frame styles="md:w-9/10 w-19/20" rounded>
+                <Frame styles="w-19/20" rounded>
                     <div className="
                         w-full h-1/10
                         border-b-4 border-separator
