@@ -24,6 +24,7 @@ function Tab({
                     ${active ? "bg-separator font-bold" : "bg-transparent hover:bg-separator hover:text-foreground text-placeholder"}
                 `}
                 onClick={onClick}
+                key={value}
             >
                 <span className={`
                     
